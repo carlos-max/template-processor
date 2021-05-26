@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Content.
+    -->
+    <changeSet id="20190601151030-1" author="carlos.max">
+        <createTable tableName="content">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="print_order" type="int">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="font_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="font_size" type="int">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="color" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="bold" type="tinyint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="underline" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="capitalized" type="tinyint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="strike_through" type="tinyint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="italic" type="tinyint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="vertical_alignment" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="value" type="varchar(1000)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="image_value" type="longblob">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="image_width_emu" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="image_height_emu" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="paragraph_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20190601151030-2" author="carlos.max">
+
+        <addForeignKeyConstraint baseColumnNames="paragraph_id"
+                                 baseTableName="content"
+                                 constraintName="fk_content_paragraph"
+                                 referencedColumnNames="id"
+                                 referencedTableName="paragraph"/>
+
+    </changeSet>
+</databaseChangeLog>

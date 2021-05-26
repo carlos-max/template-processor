@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/20190601143830_added_entity_Template.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190601145030_added_entity_Paragraph.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190601151030_added_entity_Content.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190601151530_added_entity_Header.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190601151730_added_entity_Footer.xml" relativeToChangelogFile="false"/>
+
+    <include file="config/liquibase/changelog/20190601160530_added_entity_TemplateParagraph.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190601161030_added_entity_HeaderParagraph.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190601161530_added_entity_FooterParagraph.xml" relativeToChangelogFile="false"/>
+
+    <include file="config/liquibase/changelog/20190701143830_added_entity_TableDoc.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190701144030_added_entity_TableRow.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190701154030_added_entity_TableCell.xml" relativeToChangelogFile="false"/>
+
+    <!-- Alter -->
+    <include file="config/liquibase/changelog/20190707172030_alter_entity_Header.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190707172530_alter_entity_Footer.xml" relativeToChangelogFile="false"/>
+
+</databaseChangeLog>

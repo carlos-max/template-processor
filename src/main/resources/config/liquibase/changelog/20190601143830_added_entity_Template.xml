@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Template.
+    -->
+    <changeSet id="20190601143830-1" author="carlos.max">
+        <createTable tableName="template">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="uuid" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" unique="true" />
+            </column>
+
+            <column name="margin_top" type="int">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="margin_bottom" type="int">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="margin_left" type="int">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="margin_right" type="int">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="watermark_blob" type="blob">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="creation_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+        </createTable>
+        <dropDefaultValue tableName="template" columnName="creation_date" columnDataType="date"/>
+
+    </changeSet>
+</databaseChangeLog>

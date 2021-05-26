@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: DocProcessor
+  profiles:
+    active: #spring.profiles.active#
+  jackson:
+    serialization.write_dates_as_timestamps: false
+    serialization-inclusion: non_empty
+    deserialization:
+      fail-on-unknown-properties: false
+  liquibase:
+    change-log: classpath:/config/liquibase/master.xml
+
+server:
+  port: 8080
